@@ -1,0 +1,68 @@
+<?php
+    
+    namespace Packages\Blog;
+
+    use \Packages\Framebone\Pack\Info as Pack;
+
+    class Info extends Pack\InfoAbstract
+    {
+        protected $_cid = 'blog_zed';
+        protected $_versions = ['1','2','3'];
+
+        public function version_1()
+        {
+            $info = [];
+
+            $info['pack']['title'] = 'Blog do futuro!';
+            $info['pack']['description'] = 'Esta ainda vai ser meu Blog do futuro!';
+            $info['pack']['dependencies'][] = 'database';
+
+            $info['version']['date'] = '2012-07-08 11:14:15';
+            $info['version']['description'] = 'log inicial! contem o basico para este modulo funcionar';
+            $info['version']['log'][] = [
+                'description' => 'Criados as entitys que cuidam dos posts',
+                'author' => 'Eduardo Segura',
+                'email' => 'zro.eduardo@gmail.com',
+            ];
+
+            $info['database']['create']['teste2'] = [
+                'id INT',
+                'papo TEXT',
+            ];
+
+            $info['database']['alter']['teste2'] = [
+                'ADD COLUMN log VARCHAR(12) NOT NULL AFTER papo',
+            ];
+
+            return $info;
+        }
+
+        public function version_2()
+        {
+            $ops = [];
+            $ops['pack']['title'] = 'Blog feito para o futuro!';
+
+            $ops['version']['date'] = '2013-07-08 11:14:15';
+            $ops['version']['description'] = 'Mudancinha';
+            $ops['version']['log'][] = [
+                'description' => 'Nesta versão tivemos que mudar o nome do móudlo, para não parece que era outra coisa..',
+            ];
+
+            $ops['version']['log'][] = [
+                'description' => 'Criados o segundo versionamento.',
+            ];
+
+            return $ops;
+        }
+
+        public function version_3()
+        {
+            $uhul = [];
+            $uhul['pack']['title'] = 'bloguinho :(';
+
+            $uhul['version']['date'] = '2014-07-08 11:14:15';
+            $uhul['version']['description'] = ';(';
+
+            return $uhul;
+        }
+    }

@@ -1,0 +1,67 @@
+<?php
+    
+    namespace Packages\Framebone\Router;
+
+    use \Packages\Framebone as fb;
+
+    class Update extends fb\Package\Abstract\Update
+    {
+        public $_cid = 'fb_router';
+        public $_suports = [1];
+
+        public function update1_001()
+        {
+            $author = 'Eduardo Segura';
+            $email = 'zro.eduardo@gmail.com';
+
+            $update = [];
+            $update['pack'] = [
+                'title' => 'Router',
+                'gather' => 'Framebone',
+                'description' => 'Sistema de gerenciamento das rotas.',
+                'version' => [0,1,0],
+            ];
+
+            $update['update'] = [
+                'date' => '2014-11-16 20:57:00',
+                'description' => 'Criação do pacote Router.',
+                'logs' => [
+                    ['description' => 'Criado o pacote inicial', 'author' => $author, 'email' => $email],
+                ],
+            ];
+
+            $update['database'] = [
+                'create' => [
+                    'fb_routes' => [
+                        'id SERIAL',
+                        'cid VARCHAR(400) NOT NULL',
+                        'version VARCHAR(20) NOT NULL',
+                        'title TEXT',
+                        'description TEXT',
+                        'gather TEXT',
+                        'dependency TEXT',
+                        'incompatible TEXT',
+                        'PRIMARY KEY (id)',
+                    ],
+                    'fb_pack_update' => [
+                        'id SERIAL',
+                        'id_pack INT UNSIGNED NOT NULL',
+                        'number FLOAT UNSIGNED',
+                        'date DATETIME NOT NULL',
+                        'description TEXT',
+                        'PRIMARY KEY (id)',
+                    ],
+                    'fb_pack_log' => [
+                        'id SERIAL',
+                        'id_update INT UNSIGNED NOT NULL',
+                        'description TEXT',
+                        'author VARCHAR(400)',
+                        'email VARCHAR(400)',
+                        'PRIMARY KEY (id)'
+                    ],
+                ],
+            ];
+
+            return $update;
+        }
+    }

@@ -1,0 +1,22 @@
+<?php
+    namespace Framebone;
+
+    use \Framebone as FB,
+        \Framebone\Library as FBLib;
+
+    class Attach
+    {
+        public function __construct() {
+            // Carregar as configurações iniciais
+            $this->_config();
+        }
+
+        private function _config()
+        {
+            $json = FBLib\File::loadJson("Packs". DIRECTORY_SEPARATOR . "config.json", true, true);
+
+            if($json && !is_null($json)) {
+                FBLib\Stack::add($json, array('deny' => array('u', 'w')));
+            }
+        }
+    }
