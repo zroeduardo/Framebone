@@ -1,0 +1,30 @@
+<?php
+    namespace Packages\Framebone;
+
+    class Record
+    {
+        public function __construct()
+        {
+            // Load the user variables
+            new Settings();
+
+            $settings = [
+                'system' => [
+                    'version' => [1,0,1],
+                ],
+            ];
+
+            Stack::add($settings, array('deny' => array('u', 'w')));
+        }
+
+        /**
+         * After que stacker load, adds the database params.
+         */
+        public function bootstrap()
+        {
+            
+        }
+    }
+    
+
+?>

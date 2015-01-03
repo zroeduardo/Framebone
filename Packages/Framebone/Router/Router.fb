@@ -1,0 +1,10 @@
+<?php 
+
+    namespace Packages\Framebone\Router;
+
+    use \Packages\Framebone as fb;
+
+    class Router extends fb\Package\Abstract\Package
+    {
+
+    }

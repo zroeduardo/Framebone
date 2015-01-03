@@ -1,0 +1,155 @@
+<?php
+    
+    namespace Packages\Framebone\Package;
+
+    use \Packages\Framebone as fb;
+
+    class Update extends fb\Package\Abstract\Update
+    {
+        public $_cid = 'fb_package';
+        public $_suports = [1];
+
+        public function update1_001()
+        {
+            $info = [];
+            $author = 'Eduardo Segura';
+            $email = 'zro.eduardo@gmail.com';
+
+            $info['pack'] = [
+                'title' => 'Packages',
+                'gather' => 'Framebone',
+                'description' => 'Sistema de gerenciamento de pacotes.',
+                'version' => [0,2,0],
+                // 'dependency' => [
+                //     ['abc', self::MINUS, 0,1],
+                // ],
+                // 'incompatible' => [
+                //     ['asd', self::PLUS, 1],
+                //     ['dfrdf', self::EQUAL, 4,2,1],
+                // ],
+            ];
+
+            $info['update'] = [
+                'date' => '2014-11-16 15:25:00',
+                'description' => 'Criação do pacote Packages.',
+                'logs' => [
+                    ['description' => 'Criado o banco de dados', 'author' => $author, 'email' => $email],
+                    ['description' => 'Alteramos a forma como o CRUD do pack funciona', 'author' => $author, 'email' => $email],
+                    ['description' => 'Criado API: Instalação, Updates e Desinstalações de pacotes.', 'author' => $author, 'email' => $email],
+                ],
+            ];
+
+            $info['database'] = [
+                'create' => [
+                    'fb_pack' => [
+                        'id SERIAL',
+                        'cid VARCHAR(400) NOT NULL',
+                        'version VARCHAR(20) NOT NULL',
+                        'title TEXT',
+                        'description TEXT',
+                        'gather TEXT',
+                        'dependency TEXT',
+                        'incompatible TEXT',
+                        'PRIMARY KEY (id)',
+                    ],
+                    'fb_pack_update' => [
+                        'id SERIAL',
+                        'id_pack INT UNSIGNED NOT NULL',
+                        'number FLOAT UNSIGNED',
+                        'date DATETIME NOT NULL',
+                        'description TEXT',
+                        'PRIMARY KEY (id)',
+                    ],
+                    'fb_pack_log' => [
+                        'id SERIAL',
+                        'id_update INT UNSIGNED NOT NULL',
+                        'description TEXT',
+                        'author VARCHAR(400)',
+                        'email VARCHAR(400)',
+                        'PRIMARY KEY (id)'
+                    ],
+                ],
+            ];
+
+            return $info;
+        }
+
+        // public function update1_002()
+        // {
+        //     $info['pack'] = [
+        //         'version' => [0,1,1],
+        //     ];
+
+        //     $info['update'] = [
+        //         'date' => '2014-11-12 23:36:00',
+        //         'description' => 'Update da versão.',
+        //         'logs' => [
+        //             ['description' => 'Alterado a versão'],
+        //         ],
+        //     ];
+
+        //     return $info;
+        // }
+
+        // public function update1_003()
+        // {
+        //     $info['pack'] = [
+        //         'version' => [0,0,2],
+        //     ];
+
+        //     $info['update'] = [
+        //         'date' => '2014-11-12 23:36:00',
+        //         'description' => 'ahieaoheiah.',
+        //     ];
+
+        //     $info['database'] = [
+        //         'alter' => [
+        //             'fb_pack_log' => [
+        //                 'RENAME TO haha'
+        //             ],
+        //         ],
+        //         'create' => [
+        //             'hihi' => [
+        //                 'id SERIAL',
+        //                 'cid VARCHAR(400) NOT NULL',
+        //             ],
+        //         ],
+        //     ];
+
+        //     return $info;
+        // }
+
+        // public function update1_004()
+        // {
+        //     $info['pack'] = [
+        //         'version' => [0,0,3],
+        //     ];
+
+        //     $info['update'] = [
+        //         'date' => '2014-11-12 23:36:00',
+        //         'description' => '23423432',
+        //     ];
+
+        //     $info['database'] = [
+        //         'drop' => [
+        //             'haha','hihi'
+        //         ],
+        //     ];
+
+        //     return $info;
+        // }
+
+        // public function update1_005()
+        // {
+        //     $info['pack'] = [
+        //         'version' => [0,0,1],
+        //     ];
+
+        //     $info['update'] = [
+        //         'date' => '2014-11-12 23:36:00',
+        //         'description' => '23423432',
+        //     ];
+
+        //     return $info;
+        // }
+    }

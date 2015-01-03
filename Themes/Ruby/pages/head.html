@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ HEADER }}</title>
+
+		{% set cssMinify 	= { 0: '../Libraries/Styles/grid.css', 
+								1: '../Libraries/Styles/normalize.css' } %}
+		<link rel="stylesheet" type="text/css" href="{{ bundle('css','Content/Bundle.css', cssMinify) }}" />
+
+		{% set jsCombine	= { 0: '../Libraries/Javascripts/angular-1.2.12.min.js',
+								1: '../Libraries/Javascripts/jquery-1.11.0.min.js' } %}
+		<script type="text/javascript" src="{{ bundle('js', 'Content/Bundle.js', jsCombine) }}"></script>
+	</head>
+
+	<body>
